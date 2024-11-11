@@ -1,1 +1,17 @@
-Title: Site Title
+Title: Grimoire: A web publishing tool by rmv
+
+----
+
+Name: Grimoire: A web publishing tool
+
+----
+
+Logo: - file://J08mDWiuZX87S46v
+
+----
+
+Logotoggle: true
+
+----
+
+Attribution: true

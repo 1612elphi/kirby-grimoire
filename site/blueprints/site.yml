@@ -3,3 +3,31 @@ title: Site
 sections:
   pages:
     type: pages
+    label: Books
+    layout: cards
+    template: book
+    
+  fields:
+    type: fields
+    label: Settings
+    fields:
+      line:
+        type: line
+      heading:
+        type: headline
+        label: Settings
+      name:
+        type: text
+        label: Name
+      logo:
+        type: files
+        label: Logo
+        width: 1/2
+      logotoggle:
+        type: toggle
+        label: Show Logo?
+        width: 1/6
+      attribution:
+        type: toggle
+        label: Show attribution at the bottom of the page?
+        width: 2/6

@@ -1,0 +1,28 @@
+title: Chapter
+
+columns:
+  - width: 1/3
+    fields:
+      subtitle:
+        type: text
+        label: Subtitle
+      an:
+        type: textarea
+        label: Author's note
+        size: medium
+      anmode:
+        type: select
+        label: Author's note mode
+        default: not
+        options:
+          not: Don't Display
+          before: Display Before Chapter
+          after: Display After Chapter
+      
+        
+  - width: 2/3
+    fields:
+      wcontent:
+        type: textarea
+        label: Content
+        size: huge

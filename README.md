@@ -1,36 +1,38 @@
-<img src="http://getkirby.com/assets/images/github/plainkit.jpg" width="300">
+# Kirby Grimoire
 
-**Kirby: the CMS that adapts to any project, loved by developers and editors alike.**
-The Plainkit is a minimal Kirby setup with the basics you need to start a project from scratch. It is the ideal choice if you are already familiar with Kirby and want to start step-by-step.
+A web publishing tool for the modern web.
+Inspired by ONCE Writebook, implemented in Kirby 4.
 
-You can learn more about Kirby at [getkirby.com](https://getkirby.com).
+## Features
 
-### Try Kirby for free
+Write in Markdown, publish to the web, and share your work with the world.
+Or, if you don't want to, keep it private and share it with a select few.
 
-You can try Kirby and the Plainkit on your local machine or on a test server as long as you need to make sure it is the right tool for your next project. … and when you’re convinced, [buy your license](https://getkirby.com/buy).
+## Installation
 
-### Get going
+1. Clone this repository to the web server you want to run it on.
+2. Go to /panel and follow the installation instructions.
+3. Enjoy!
 
-Read our guide on [how to get started with Kirby](https://getkirby.com/docs/guide/quickstart).
+Note: I probably won't update this unless there's game-breaking bugs, so PLEASE update Kirby to the latest version. You can do this by running `composer update` in the root directory of the project.
 
-You can [download the latest version](https://github.com/getkirby/plainkit/archive/main.zip) of the Plainkit.
-If you are familiar with Git, you can clone Kirby's Plainkit repository from Github.
+## Requirements
 
-    git clone https://github.com/getkirby/plainkit.git
+- PHP 8.2 or higher
+- A webserver
+- Something to share!
 
-## What's Kirby?
+## License
 
--   **[getkirby.com](https://getkirby.com)** – Get to know the CMS.
--   **[Try it](https://getkirby.com/try)** – Take a test ride with our online demo. Or download one of our kits to get started.
--   **[Documentation](https://getkirby.com/docs/guide)** – Read the official guide, reference and cookbook recipes.
--   **[Issues](https://github.com/getkirby/kirby/issues)** – Report bugs and other problems.
--   **[Feedback](https://feedback.getkirby.com)** – You have an idea for Kirby? Share it.
--   **[Forum](https://forum.getkirby.com)** – Whenever you get stuck, don't hesitate to reach out for questions and support.
--   **[Discord](https://chat.getkirby.com)** – Hang out and meet the community.
--   **[Mastodon](https://mastodon.social/@getkirby)** – Spread the word.
--   **[Instagram](https://www.instagram.com/getkirby/)** – Share your creations: #madewithkirby.
+Grimoire is in essence a "theme" for Kirby 4, as much as is possible with a system as flexible as Kirby, anyway.
+As such, it is licensed under the same license as Kirby 4 itself, which is the [Kirby End User License Agreement](https://getkirby.com/license).
+Kirby 4 is not free software. You are allowed to use it for evaluation purposes only. If you want to use it in a live environment, you need to purchase a license from [getkirby.com](https://getkirby.com).
 
----
+As for the content of this repository apart from Kirby's copyrighted code, it is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+This means you can do whatever you want with it, as long as you include the original license and copyright notice.
 
-© 2009 Bastian Allgeier
-[getkirby.com](https://getkirby.com) · [License agreement](https://getkirby.com/license)
+## Credits
+
+- [Kirby](https://getkirby.com) for the CMS
+- [ONCE Writebook](https://once.com/writebook) for the inspiration
+- [Tailwind CSS](https://tailwindcss.com) for the CSS framework
