@@ -1,3 +1,5 @@
+![](screenshot.png)
+
 # Kirby Grimoire
 
 A web publishing tool for the modern web.
