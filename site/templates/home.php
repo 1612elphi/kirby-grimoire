@@ -2,7 +2,7 @@
 
 <nav class="flex items-center justify-center sticky p-8">
   <div class="flex items-center justify-center">
-    <?php if ($site->logotoggle()): ?>
+    <?php if ($site->logotoggle() && $site->logo()->isNotEmpty() && $site->logo()->toFile()): ?>
       <img src="<?= $site->logo()->toFile()->url() ?>" class="h-6 mr-4">
     <?php endif ?>
     <a href="<?= $site->url() ?>" class="text-2xl font-bold"><?= $site->name() ?></a>
@@ -31,8 +31,8 @@
 
 <div class="fixed bottom-0 left-0 right-0 z-50">
   <?php if($site->attribution()): ?>
-    <div class="text-center p-4 text-sm text-gray-500">
-      Grimoire. Written by rmv. Powered by Kirby CMS. Inspired by ONCE Writebook by 37signals.
-    </div>
+  <div class="text-center p-4 text-sm text-gray-500">
+    Grimoire. Written by <a href="https://rmv.fyi">rmv</a>. Powered by Kirby CMS. Inspired by ONCE Writebook by 37signals.
+  </div>
   <?php endif ?>
 </div>
