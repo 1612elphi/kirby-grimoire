@@ -10,7 +10,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>';
     <lastBuildDate><?= date('r', $page->modified()) ?></lastBuildDate>
     <atom:link href="<?= esc($page->url() . '.xml') ?>" rel="self" type="application/rss+xml" />
     
-    <?php foreach($page->children()->listed()->sortBy('date', 'desc') as $chapter): ?>
+    <?php foreach($page->children()->listed()->flip() as $chapter): ?>
     <item>
       <title><?= esc($chapter->title()) ?></title>
       <link><?= esc($chapter->url()) ?></link>
