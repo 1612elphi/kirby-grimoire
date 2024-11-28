@@ -29,7 +29,7 @@
     <img src="<?= $page->cover()->toFile() ? $page->cover()->toFile()->url() : '/assets/img/fallback.jpg' ?>" alt="<?= $page->title() ?>" class="w-full h-auto mb-4 rounded-lg shadow-lg">
   </div>
 
-  <div class="w-2/3 pl-8">
+  <div class="w-2/3 pl-8 mb-24">
     <div class="">
       <h1 class="text-2xl font-bold mb-2"><?= $page->title() ?></h1>
       <h2 class="text-xl mb-2"><?= $page->subtitle() ?></h2>
