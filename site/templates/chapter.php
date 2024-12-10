@@ -55,3 +55,5 @@
   </a>
 </div>
 <?php endif; ?>
+
+<?php snippet('scripts') ?>

@@ -50,3 +50,4 @@
   </div>
 </div>
 
+<?php snippet('scripts') ?>
