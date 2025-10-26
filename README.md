@@ -8,8 +8,21 @@ Find a demo [here](https://read.rmv.fyi/).
 
 ## Features
 
+### Books
 Write in Markdown, publish to the web, and share your work with the world.
 Or, if you don't want to, keep it private and share it with a select few.
+
+### Comics (New in V2)
+Publish webcomics with a dedicated comic reader interface:
+- Upload image files as comic pages with drag-and-drop ordering
+- Add page titles, captions, and alt text for accessibility
+- Include expandable author commentary on individual pages
+- Organise pages into chapters with optional chapter titles
+- Content rating system (SFW/NSFW/NSFL) with automatic blurring
+- Series support with volume numbering
+- Reading progress tracking and resume functionality
+- Keyboard navigation (arrow keys to move between pages)
+- RSS feeds for new page updates
 
 ## Installation
 
