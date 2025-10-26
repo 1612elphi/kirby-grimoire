@@ -37,8 +37,6 @@ Wcontent:
 
 **NOTE:** For development environments, use `npm run watch` to enable automatic asset rebuilding.
 
-[PLACEHOLDER: Screenshot of terminal showing successful composer update]
-
 ### 3.2 WEB SERVER CONFIGURATION
 
 **PROCEDURE 3.2.1: Apache Configuration**
