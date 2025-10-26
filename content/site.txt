@@ -15,3 +15,7 @@ Logotoggle: true
 ----
 
 Attribution: true
+
+----
+
+Showtypebadge: true

@@ -1,6 +1,12 @@
 # Kirby .htaccess
 # revision 2023-07-22
 
+# increase upload limits for high-quality comic images
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+php_value max_execution_time 300
+php_value max_input_time 300
+
 # rewrite rules
 <IfModule mod_rewrite.c>
 

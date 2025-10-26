@@ -22,7 +22,31 @@ columns:
         type: textarea
         label: Blurb
         size: large
-        
+      rating:
+        type: select
+        label: Content Rating
+        default: sfw
+        options:
+          sfw: SFW (Safe for Work)
+          nsfw: NSFW (Not Safe for Work - blurred)
+          nsfl: NSFL (Not Safe for Life - blurred with confirmation)
+        help: Controls how the cover is displayed on the home page
+      line2:
+        type: line
+      seriesheading:
+        type: headline
+        label: Series Information
+      seriesname:
+        type: text
+        label: Series Name
+        help: If this book is part of a series, enter the series name
+      seriesnumber:
+        type: number
+        label: Series Number
+        min: 1
+        step: 1
+        help: The order of this book in the series (e.g., 1, 2, 3)
+
   - width: 2/3
     sections:
       pages:

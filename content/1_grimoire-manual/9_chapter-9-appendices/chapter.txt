@@ -1,0 +1,168 @@
+Title: Chapter 9 - Appendices
+
+----
+
+Subtitle: 
+
+----
+
+An: 
+
+----
+
+Anmode: not
+
+----
+
+Wcontent:
+
+### APPENDIX A: GLOSSARY OF TERMS
+
+**Blurb:** Marketing description text for a book, displayed on book detail page.
+
+**Blueprint:** YAML configuration file defining fields and structure for Panel editing interface.
+
+**Chapter:** Individual content page within a book, containing readable text.
+
+**Grimoire:** The system name, referring to this web publishing platform.
+
+**KirbyTags:** Special syntax for embedding content. Image and File tags are supported.
+
+**LocalStorage:** Browser API for persistent client-side data storage.
+
+**Panel:** Kirby's administrative web interface for content management.
+
+**Prose:** Tailwind CSS plugin providing optimised typography for long-form reading.
+
+**Slug:** URL-friendly identifier for pages, lowercase with hyphens.
+
+**Template:** PHP file that renders page content as HTML.
+
+**wcontent:** Field name for chapter content (Grimoire-specific, not standard Kirby field).
+
+### APPENDIX B: KEYBOARD SHORTCUT REFERENCE
+
+| Key | Action | Available On |
+|-----|--------|--------------|
+| `T` | Toggle light/dark theme | All pages |
+| `→` | Navigate to next chapter | Chapter pages |
+| `←` | Navigate to previous page/book | Chapter pages |
+| `A-` | Decrease font size | Chapter pages (desktop) |
+| `A` | Reset to default font size | Chapter pages (desktop) |
+| `A+` | Increase font size | Chapter pages (desktop) |
+
+**Note:** Shortcuts disabled when text input has focus.
+
+### APPENDIX C: CONTENT RATING SYSTEM
+
+| Rating | Meaning | Home Page Behavior | Access Requirement |
+|--------|---------|-------------------|-------------------|
+| SFW | Safe for Work | Cover displayed normally | None |
+| NSFW | Not Safe for Work | Cover blurred, click to reveal | Single click |
+| NSFL | Not Safe for Life | Cover blurred, click prompts warning | Click + confirmation |
+
+**Implementation Notes:**
+- Rating stored in book.txt as `Rating:` field
+- Blurring implemented via CSS class `blur-xl`
+- JavaScript handles click events and confirmations
+- NSFL warning text: "This content is marked as NSFL (Not Safe for Life) and may contain extremely disturbing material. Are you sure you want to reveal this content?"
+
+### APPENDIX D: SERIES NAVIGATION SPECIFICATION
+
+Series navigation enables multi-book sequential reading.
+
+**Requirements:**
+1. Each book in series must have identical `seriesname` value
+2. Each book must have unique `seriesnumber` (integer, starting from 1)
+3. Numbers must be sequential (no gaps: 1, 2, 3, etc.)
+
+**Behavior:**
+- Book page displays "Previous" link if book N-1 exists with matching series name
+- Book page displays "Next" link if book N+1 exists with matching series name
+- Links positioned below blurb text, before progress indicator
+- Format: Border buttons with arrow indicators
+
+**Example Series Configuration:**
+
+Book 1: `Seriesname: The Chronicles` / `Seriesnumber: 1`
+Book 2: `Seriesname: The Chronicles` / `Seriesnumber: 2`
+Book 3: `Seriesname: The Chronicles` / `Seriesnumber: 3`
+
+### APPENDIX E: RSS FEED SPECIFICATION
+
+Each book automatically generates an RSS 2.0 feed.
+
+**Feed URL:** `https://[domain]/[book-slug].xml`
+
+**Feed Elements:**
+- `<title>` Book title
+- `<description>` Book blurb
+- `<link>` Book URL
+- `<item>` One per chapter, containing:
+  - `<title>` Chapter title
+  - `<description>` First 500 characters of chapter content
+  - `<link>` Chapter URL
+  - `<pubDate>` Chapter publication date
+  - `<guid>` Unique chapter identifier
+
+**Template Location:** `site/templates/book.xml.php`
+
+### APPENDIX F: TAILWIND TYPOGRAPHY CLASSES
+
+Grimoire uses Tailwind's Typography plugin for optimised reading.
+
+**Applied Classes:**
+
+| Class | Purpose | Applied To |
+|-------|---------|------------|
+| `prose` | Base typography styles | Content containers |
+| `prose-sm` | Small text size | Content (when user selects A-) |
+| `prose-lg` | Large text size (default) | Content (default state) |
+| `prose-xl` | Extra large text | Content (when user selects A+) |
+| `dark:prose-invert` | Dark mode text colors | Content (in dark theme) |
+| `max-w-prose` | Optimal reading width | Content containers |
+
+**Effective Measurements:**
+- `prose-sm`: Approximately 14px base font
+- `prose-lg`: Approximately 18px base font (default)
+- `prose-xl`: Approximately 20px base font
+- `max-w-prose`: 65 characters per line (optimal readability)
+
+### APPENDIX G: TECHNICAL SUPPORT
+
+**Official Repository:**
+https://github.com/1612elphi/kirby-grimoire
+
+**Issue Reporting:**
+Submit bug reports and feature requests via GitHub Issues.
+
+**Community Support:**
+Kirby CMS Forum: https://forum.getkirby.com
+
+**Commercial Support:**
+Psh, who are you, a cop?
+
+---
+
+## REVISION HISTORY
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.0 | November 2024 | Initial release |
+| 2.0 | October 2025 | Added comic support |
+
+---
+
+## LICENSE AND COPYRIGHT
+
+Grimoire Publishing System
+Copyright © RMV
+
+Built on Kirby CMS
+Copyright © Bastian Allgeier
+
+This documentation may be reproduced and distributed under the terms of the system license.
+
+----
+
+Uuid: B0YA2Ezos3DOKbdp

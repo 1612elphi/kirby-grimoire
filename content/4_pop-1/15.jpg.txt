@@ -1,0 +1,29 @@
+Sort: 10
+
+----
+
+Chapterstart: false
+
+----
+
+Alt: 
+
+----
+
+Caption: 
+
+----
+
+Commentary: 
+
+----
+
+Commentary-mode: hidden
+
+----
+
+Uuid: 9SG5rkNVGxX89Le2
+
+----
+
+Template: comic-page

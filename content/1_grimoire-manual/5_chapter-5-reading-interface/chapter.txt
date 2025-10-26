@@ -1,0 +1,217 @@
+Title: Chapter 5 - Reading Interface
+
+----
+
+Subtitle: 
+
+----
+
+An: 
+
+----
+
+Anmode: not
+
+----
+
+Wcontent:
+
+### 5.1 HOME PAGE INTERFACE
+
+The home page displays all published books in a responsive grid layout.
+
+**Interface Components:**
+
+- **Navigation Bar:** Site name/logo, theme toggle, Panel access link
+- **Book Grid:** Thumbnail cards for each book
+- **Book Card Elements:** Cover image, title, series information (if applicable), author name
+- **Footer:** Optional attribution text
+
+(image: screenshot-2025-10-26-at-19.28.41.png)
+
+**User Actions:**
+
+- Click any book card to navigate to book detail page
+- Click Panel icon to access administrative interface
+- Click theme toggle to switch between light/dark modes
+
+### 5.2 BOOK PAGE INTERFACE
+
+Book pages provide comprehensive information about a work and chapter access.
+
+**Layout Structure:**
+
+**Left Column (Desktop):**
+- Cover image (full size)
+
+**Right Column (Desktop):**
+- Series information (if applicable)
+- Title and subtitle
+- Author name
+- Blurb text
+- Series navigation (previous/next in series)
+- Reading progress indicator
+- "Resume Reading" button
+- Total reading time estimate
+- Chapter list with individual reading times
+
+(image: screenshot-2025-10-26-at-19.29.40.png)
+
+**Mobile Layout:**
+
+On screens below 768px width, layout converts to single column with cover image at top.
+
+### 5.3 CHAPTER READING INTERFACE
+
+Chapter pages provide optimized reading experience with minimal distractions.
+
+**Interface Components:**
+
+**Top Navigation Bar:**
+- Back button (returns to book page)
+- Breadcrumb: Book Title » Chapter Title
+- Font size controls (A-, A, A+) - desktop only
+- Theme toggle
+
+**Reading Progress Bar:**
+- Fixed at top of viewport
+- Fills left-to-right as reader scrolls
+- Black gradient in light mode, white gradient in dark mode
+
+**Content Area:**
+- Author's note (if configured for "before" display)
+- Chapter content (centered, optimized typography)
+- Author's note (if configured for "after" display)
+- "Read Next" button (if subsequent chapter exists)
+
+(image: screenshot-2025-10-26-at-19.30.12.png)
+
+### 5.4 THEME SWITCHING
+
+Grimoire supports light and dark reading modes.
+
+**PROCEDURE 5.4.1: Manual Theme Toggle**
+
+Method 1: Click moon/sun icon in navigation bar
+Method 2: Press `T` key on keyboard
+
+**Theme Characteristics:**
+
+| Element | Light Mode | Dark Mode |
+|---------|------------|-----------|
+| Background | White (#FFFFFF) | Dark Gray (#111827) |
+| Primary Text | Black (#000000) | Light Gray (#F9FAFB) |
+| Secondary Text | Gray (#6B7280) | Medium Gray (#9CA3AF) |
+| Progress Bar | Black gradient | White gradient |
+
+**Persistence:** Theme preference stored in browser LocalStorage, persists across sessions.
+
+### 5.5 FONT SIZE ADJUSTMENT
+
+Desktop users can adjust reading text size for optimal comfort.
+
+**PROCEDURE 5.5.1: Font Size Selection**
+
+1. Navigate to any chapter page
+2. Locate font size controls (A-, A, A+) in navigation bar
+3. Click desired size:
+   - **A-** (Small): prose-sm class
+   - **A** (Default): prose-lg class
+   - **A+** (Large): prose-xl class
+4. Size preference saved automatically
+
+**NOTE:** Font size controls hidden on mobile devices (screen width < 768px) to preserve navigation bar space.
+
+### 5.6 READING PROGRESS TRACKING
+
+Grimoire automatically tracks reading progress at both chapter and book levels.
+
+**TRACKING MECHANISM 5.6.1: Chapter Progress**
+
+- System monitors scroll position in real-time
+- When reader scrolls to 90% of chapter length, chapter marked as complete
+- Progress data stored in LocalStorage: `grimoire_chapter_progress_{bookId}`
+- Completed chapters display with reduced opacity (40%) on book page
+
+**TRACKING MECHANISM 5.6.2: Book Progress**
+
+- Book page displays progress indicator when any chapters completed
+- Shows: "X of Y chapters (Z%)"
+- Visual progress bar fills proportionally
+- Progress data persists in browser LocalStorage
+
+(image: screenshot-2025-10-26-at-19.31.33.png)
+
+### 5.7 SCROLL POSITION MEMORY
+
+The system preserves exact scroll position for each chapter.
+
+**MECHANISM 5.7.1: Position Saving**
+
+- Scroll position saved automatically every 500ms during reading
+- Position saved on page navigation
+- Stored with timestamp in LocalStorage: `grimoire_reading_position_{bookId}_{chapterId}`
+
+**MECHANISM 5.7.2: Position Restoration**
+
+- On chapter page load, system checks for saved position
+- If found, page scrolls to saved location after 100ms delay
+- Allows seamless continuation of reading session
+
+### 5.8 READING TIME ESTIMATES
+
+All reading time calculations based on 225 words per minute (industry standard).
+
+**Display Locations:**
+
+- **Book Page:** Total reading time for entire book
+- **Chapter List:** Individual time estimate per chapter
+
+**Calculation Method:**
+
+```
+words_in_content = str_word_count(chapter_content)
+minutes = ceil(words_in_content / 225)
+```
+
+### 5.9 KEYBOARD SHORTCUTS
+
+The following keyboard shortcuts enhance reading efficiency:
+
+| Key | Function | Context |
+|-----|----------|---------|
+| `T` | Toggle theme | All pages |
+| `→` (Right Arrow) | Next chapter | Chapter pages |
+| `←` (Left Arrow) | Previous page | Chapter pages |
+
+**NOTE:** Keyboard shortcuts disabled when input/textarea elements have focus.
+
+### 5.10 DISTRACTION-FREE READING MODE
+
+Navigation bar automatically hides during scrolling to maximize reading space.
+
+**BEHAVIOR 5.10.1: Auto-Hide Navigation**
+
+- When scrolling down beyond 100 pixels: navigation slides up and fades out
+- When scrolling up: navigation slides down and fades in
+- When hovering near top of page: navigation becomes visible
+- Smooth CSS transitions provide non-jarring experience
+
+This feature reduces visual clutter during active reading while maintaining quick access to controls.
+
+### 5.11 RSS FEED ACCESS
+
+Each book provides an XML RSS feed for chapter notifications.
+
+**PROCEDURE 5.12.1: Subscribing to Book Feed**
+
+1. Navigate to book page
+2. Click RSS icon in navigation bar
+3. Browser displays XML feed or prompts for feed reader
+4. Add URL to preferred RSS reader application
+
+**Feed URL Format:** `https://[domain]/[book-slug].xml`
+
+----
+
+Uuid: yd8leMg5vFawujKj

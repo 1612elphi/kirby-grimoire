@@ -1,0 +1,66 @@
+Title: Chapter 2 - System Architecture
+
+----
+
+Subtitle: 
+
+----
+
+An: 
+
+----
+
+Anmode: not
+
+----
+
+Wcontent:
+
+### 2.1 SYSTEM OVERVIEW
+
+Grimoire implements a hierarchical content structure consisting of three primary levels:
+
+**Level 1: HOME**
+The primary landing page displaying all published works in a grid layout.
+
+**Level 2: BOOK**
+Container pages for individual works, including metadata and chapter listings.
+
+**Level 3: CHAPTER**
+Individual content pages containing the readable text of each chapter.
+
+### 2.2 HARDWARE REQUIREMENTS
+
+**Minimum Server Configuration:**
+- Processor: 1 GHz or faster
+- Memory: 512 MB RAM minimum, 1 GB recommended
+- Storage: 100 MB for system files, plus storage for content and media
+
+**Client Browser Requirements:**
+- Modern web browser with JavaScript enabled
+- HTML5 and CSS3 support required
+- LocalStorage API support recommended for enhanced features
+
+### 2.3 SOFTWARE REQUIREMENTS
+
+**Server Environment:**
+- PHP Version: 8.2 or higher
+- Required PHP Extensions: mbstring, gd, curl, zip
+- Web Server: Apache, Nginx, or compatible
+- Composer: Latest stable version
+
+**Development Environment:**
+- Node.js: 14.x or higher
+- NPM: 6.x or higher
+- Tailwind CSS: Configured via npm
+
+### 2.4 LICENSING REQUIREMENTS
+
+Grimoire is distributed under open source terms. However, the following third-party components require separate licensing:
+
+- **Kirby CMS:** Requires commercial license for production use (evaluation free)
+- **Fancybox UI:** Licensed under GPLv3 or commercial license
+
+----
+
+Uuid: KiwU14LhBiXoTMGf

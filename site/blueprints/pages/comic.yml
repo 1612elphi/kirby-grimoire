@@ -1,0 +1,59 @@
+title: Comic
+
+columns:
+  - width: 1/3
+    fields:
+      cover:
+        type: files
+        label: Cover
+        multiple: false
+        size: large
+        layout: cards
+        help: Upload a cover image for the comic
+      title:
+        type: text
+        label: Title
+      subtitle:
+        type: text
+        label: Subtitle
+      author:
+        type: text
+        label: Author
+      blurb:
+        type: textarea
+        label: Description
+        size: large
+      rating:
+        type: select
+        label: Content Rating
+        default: sfw
+        options:
+          sfw: SFW (Safe for Work)
+          nsfw: NSFW (Not Safe for Work - blurred)
+          nsfl: NSFL (Not Safe for Life - blurred with confirmation)
+        help: Controls how the cover is displayed on the home page
+      line2:
+        type: line
+      seriesheading:
+        type: headline
+        label: Series Information
+      seriesname:
+        type: text
+        label: Series Name
+        help: If this comic is part of a series, enter the series name
+      seriesnumber:
+        type: number
+        label: Series Number
+        min: 1
+        step: 1
+        help: The order of this comic in the series (e.g., 1, 2, 3)
+
+  - width: 2/3
+    sections:
+      pages:
+        type: files
+        label: Comic Pages
+        layout: cards
+        template: comic-page
+        size: huge
+        help: Drag and drop images to add comic pages. The order here determines the reading order. Click on each image to edit its title, caption, and commentary.

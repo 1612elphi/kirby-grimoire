@@ -1,0 +1,54 @@
+title: Comic Page
+
+columns:
+  - width: 1/2
+    fields:
+      pagename:
+        type: text
+        label: Page Name
+        help: Display name for this page (e.g., "Page 1", "Cover", "Epilogue")
+      title:
+        type: text
+        label: Page Title
+        help: Optional title for this page
+      chapterstart:
+        type: toggle
+        label: Start of New Chapter
+        default: false
+        help: Mark this page as the beginning of a new chapter
+      chaptertitle:
+        type: text
+        label: Chapter Title
+        help: Optional title for the chapter (only shown if this is a chapter start)
+        when:
+          chapterstart: true
+      alt:
+        type: textarea
+        label: Alt Text
+        size: medium
+        help: Descriptive text for screen readers (accessibility)
+
+  - width: 1/2
+    fields:
+      caption:
+        type: textarea
+        label: Caption
+        size: medium
+        help: Optional caption displayed below the image
+      commentary:
+        type: textarea
+        label: Author Commentary
+        size: large
+        help: Optional commentary or notes about this page
+      commentary_mode:
+        type: select
+        label: Commentary Display
+        default: hidden
+        options:
+          hidden: Don't Display
+          show: Show Below Image
+          expandable: Expandable Section
+
+accept:
+  mime: image/jpeg, image/png, image/gif, image/webp
+  maxsize: 67108864  # 64MB in bytes

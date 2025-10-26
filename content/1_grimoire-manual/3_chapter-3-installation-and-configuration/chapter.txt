@@ -1,0 +1,127 @@
+Title: Chapter 3 - Installation and Configuration
+
+----
+
+Subtitle: 
+
+----
+
+An: 
+
+----
+
+Anmode: not
+
+----
+
+Wcontent:
+
+### 3.1 INITIAL INSTALLATION
+
+**PROCEDURE 3.1.1: Installing Grimoire**
+
+1. Extract the Grimoire distribution archive to your web server document root
+2. Navigate to the installation directory via command line interface
+3. Execute dependency installation:
+   ```
+   composer update
+   ```
+4. Install frontend dependencies:
+   ```
+   npm install
+   ```
+5. Build frontend assets:
+   ```
+   npm run build
+   ```
+
+**NOTE:** For development environments, use `npm run watch` to enable automatic asset rebuilding.
+
+[PLACEHOLDER: Screenshot of terminal showing successful composer update]
+
+### 3.2 WEB SERVER CONFIGURATION
+
+**PROCEDURE 3.2.1: Apache Configuration**
+
+Grimoire includes a pre-configured `.htaccess` file. Ensure `mod_rewrite` is enabled:
+
+```apache
+LoadModule rewrite_module modules/mod_rewrite.so
+```
+
+**PROCEDURE 3.2.2: Starting Development Server**
+
+For local development, utilize the built-in PHP server:
+
+```
+composer start
+```
+
+This command executes: `php -S localhost:8000 kirby/router.php`
+
+Access the system at: `http://localhost:8000`
+
+
+### 3.3 ADMINISTRATIVE PANEL ACCESS
+
+The Kirby Panel provides the administrative interface for content management.
+
+**PROCEDURE 3.3.1: Initial Panel Access**
+
+1. Navigate to: `http://[your-domain]/panel`
+2. On first access, create an administrator account
+3. Enter desired credentials
+4. Submit account creation form
+
+**WARNING:** Store administrative credentials securely. Lost credentials require manual file system recovery.
+
+### 3.4 SYSTEM CONFIGURATION
+
+Primary system configuration is located in `site/config/config.php`.
+
+**CONFIGURATION 3.4.1: Debug Mode**
+
+For production environments, ensure debug mode is disabled:
+
+```php
+'debug' => false
+```
+
+**CONFIGURATION 3.4.2: Markdown Settings**
+
+Grimoire enables extended Markdown features:
+
+```php
+'markdown' => [
+  'extra' => true
+]
+```
+
+**CONFIGURATION 3.4.3: Image Processing**
+
+Thumbnail generation settings:
+
+```php
+'thumbs' => [
+  'driver' => 'gd',
+  'quality' => 80
+]
+```
+
+### 3.5 SITE-LEVEL SETTINGS
+
+Access site settings through the Panel at Settings > Site.
+
+**Setting Fields:**
+
+| Field Name | Type | Description |
+|------------|------|-------------|
+| *Name* | Text | Site name displayed in navigation |
+| *Logo* | File | Optional logo image (replaces text name when enabled) |
+| *Show Logo?* | Toggle | Controls logo display |
+| *Show attribution at the bottom?* | Toggle | Controls footer attribution display |
+| *Show Book/Comic badges?* | Toggle | Controls content type badges on home page |
+
+----
+
+Uuid: fFRn9XJzM2QruZRt

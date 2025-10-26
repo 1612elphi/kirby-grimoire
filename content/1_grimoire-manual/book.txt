@@ -1,0 +1,33 @@
+Title: Grimoire Manual
+
+----
+
+Cover: - file://B61hlKkGU8M8diCH
+
+----
+
+Subtitle: Operator's Manual and Technical Reference
+
+----
+
+Author: Ruby Morgan Voigt
+
+----
+
+Blurb: To set up and use your Grimoire instance, refer to this document.
+
+----
+
+Rating: sfw
+
+----
+
+Seriesname: 
+
+----
+
+Seriesnumber: 
+
+----
+
+Uuid: H6MEapLIr4Xy55pZ

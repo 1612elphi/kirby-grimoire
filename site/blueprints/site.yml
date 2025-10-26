@@ -3,9 +3,11 @@ title: Site
 sections:
   pages:
     type: pages
-    label: Books
+    label: Content
     layout: cards
-    template: book
+    templates:
+      - book
+      - comic
     
   fields:
     type: fields
@@ -30,4 +32,9 @@ sections:
       attribution:
         type: toggle
         label: Show attribution at the bottom of the page?
-        width: 2/6
+        width: 1/3
+      showtypebadge:
+        type: toggle
+        label: Show Book/Comic badges on home page?
+        default: true
+        width: 1/3

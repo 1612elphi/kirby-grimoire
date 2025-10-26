@@ -1,0 +1,248 @@
+Title: Chapter 7 - Technical Reference
+
+----
+
+Subtitle: 
+
+----
+
+An: 
+
+----
+
+Anmode: not
+
+----
+
+Wcontent:
+
+### 7.1 FILE SYSTEM STRUCTURE
+
+```
+kirby-grimoire/
+├── assets/
+│   ├── css/
+│   │   ├── processing.css      # Tailwind source
+│   │   └── tailwind.css        # Compiled output
+│   ├── js/
+│   │   └── main.js             # Custom JavaScript
+│   └── img/
+│       └── fallback.jpg        # Default cover image
+├── content/                    # Content storage
+│   ├── site.txt                # Site metadata
+│   └── [numbered-books]/       # Book directories
+├── kirby/                      # Kirby CMS core (vendor)
+├── media/                      # Auto-generated thumbnails
+├── site/
+│   ├── blueprints/             # Panel field definitions
+│   │   ├── site.yml            # Site settings blueprint
+│   │   ├── pages/
+│   │   │   ├── book.yml        # Book field definitions
+│   │   │   └── chapter.yml     # Chapter field definitions
+│   │   └── files/              # File field definitions
+│   ├── config/
+│   │   └── config.php          # System configuration
+│   ├── models/                 # Custom page models
+│   ├── snippets/               # Reusable code fragments
+│   │   ├── head.php            # HTML head section
+│   │   └── scripts.php         # JavaScript and styles
+│   └── templates/              # Page rendering
+│       ├── home.php            # Landing page
+│       ├── book.php            # Book detail page
+│       ├── book.xml.php        # RSS feed template
+│       └── chapter.php         # Chapter reading page
+├── .htaccess                   # Apache configuration
+├── composer.json               # PHP dependencies
+├── package.json                # Node dependencies
+└── tailwind.config.js          # Tailwind configuration
+```
+
+### 7.2 LOCALSTORAGE DATA SCHEMA
+
+Grimoire stores user preferences and progress in browser LocalStorage using the following keys:
+
+| Key | Data Type | Purpose |
+|-----|-----------|---------|
+| `grimoire_theme` | String | "light" or "dark" |
+| `grimoire_font_size` | String | "small", "default", or "large" |
+| `grimoire_chapter_progress_{bookId}` | Array | List of completed chapter IDs |
+| `grimoire_reading_position_{bookId}_{chapterId}` | Object | `{scroll: Number, timestamp: Number}` |
+
+**Example Reading Position:**
+```json
+{
+  "scroll": 2840,
+  "timestamp": 1698765432000
+}
+```
+
+### 7.3 CONTENT FILE FORMAT
+
+All content stored in plain text format with YAML frontmatter.
+
+**EXAMPLE 7.3.1: Book Metadata (book.txt)**
+
+```
+Title: The Manual
+
+\----
+
+Subtitle: A Comprehensive Guide
+
+\----
+
+Author: Technical Publications
+
+\----
+
+Blurb: Complete system documentation
+
+\----
+
+Cover:
+- cover.jpg
+
+\----
+
+Rating: sfw
+
+\----
+
+Seriesname: Documentation Series
+
+\----
+
+Seriesnumber: 1
+```
+
+**EXAMPLE 7.3.2: Chapter Content (chapter.txt)**
+
+```
+Title: Chapter One
+
+\----
+
+Subtitle: Getting Started
+
+\----
+
+Wcontent:
+
+This is the chapter content written in Markdown.
+
+## Headings Work
+
+- Bullet lists
+- Also work
+
+**Bold** and *italic* supported.
+
+\----
+
+An: This is an author's note.
+
+\----
+
+Anmode: after
+```
+
+### 7.4 TEMPLATE HIERARCHY
+
+Kirby automatically selects templates based on page type:
+
+```
+Page Type → Blueprint → Template → Output
+──────────────────────────────────────────
+site      → site.yml  → home.php → HTML
+book      → book.yml  → book.php → HTML
+book.xml  → (same)    → book.xml.php → XML/RSS
+chapter   → chapter.yml → chapter.php → HTML
+```
+
+### 7.5 CSS ARCHITECTURE
+
+**Tailwind Configuration (tailwind.config.js):**
+
+- **Dark Mode:** Class-based (`darkMode: 'class'`)
+- **Content Paths:** Scans `site/**/*.php`, `site/**/*.js`, `content/**/*.txt`
+- **Plugins:** Typography plugin for prose styling
+
+**Custom Styles (site/snippets/scripts.php):**
+
+Inline `<style>` block provides:
+- Reading progress bar styling
+- Navigation hide/show animations
+- Font size button active states
+- Comic-specific styles (if comic feature used)
+
+### 7.6 JAVASCRIPT ARCHITECTURE
+
+All reading features encapsulated in `Grimoire` namespace.
+
+**Core Modules:**
+
+1. **Storage Utility** (`Grimoire.storage`)
+   - `get(key, defaultValue)`: Retrieve from LocalStorage
+   - `set(key, value)`: Store in LocalStorage
+
+2. **Reading Progress Bar**
+   - Monitors scroll position via `requestAnimationFrame`
+   - Updates progress bar width in real-time
+
+3. **Scroll Position Tracking**
+   - Saves position every 500ms during scroll
+   - Restores on page load after 100ms delay
+
+4. **Chapter Completion Tracking**
+   - Monitors when reader reaches 90% of content
+   - Marks chapter as read in LocalStorage
+
+5. **Font Size Controls**
+   - Manipulates Tailwind typography classes
+   - Persists preference across sessions
+
+6. **Theme Toggle**
+   - Adds/removes `dark` class on `<html>` element
+   - Updates icon graphic
+   - Persists preference
+
+7. **Distraction-Free Mode**
+   - Hides/shows navigation based on scroll direction
+   - Uses `requestAnimationFrame` for performance
+
+8. **Keyboard Shortcuts**
+   - Listens for key events
+   - Prevents default when shortcuts triggered
+   - Respects input focus state
+
+### 7.7 API ENDPOINTS
+
+Grimoire does not provide a REST API. All content access occurs through rendered HTML pages and RSS feeds.
+
+**Public URLs:**
+
+| Pattern | Description |
+|---------|-------------|
+| `/` | Home page (all books) |
+| `/{book-slug}` | Book detail page |
+| `/{book-slug}.xml` | Book RSS feed |
+| `/{book-slug}/{chapter-slug}` | Chapter reading page |
+| `/panel` | Administrative interface |
+
+### 7.8 MARKDOWN EXTENSIONS
+
+Kirby's Markdown Extra features enabled by default.
+
+**Supported Syntax:**
+
+- Standard Markdown: headings, lists, links, images, emphasis
+- Tables: Pipe-delimited table syntax
+- Fenced code blocks: Triple backtick syntax
+- Definition lists: Colon-based definitions
+- Footnotes: Reference-style footnotes
+- Abbreviations: Definition-based abbreviations
+- KirbyTags: `image:` and `file:`
+
+----
+
+Uuid: DwMZcRQPJBcJ1jHp

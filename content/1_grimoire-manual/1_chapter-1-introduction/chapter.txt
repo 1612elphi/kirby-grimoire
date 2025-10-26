@@ -1,0 +1,50 @@
+Title: Chapter 1 - Introduction
+
+----
+
+Subtitle: 
+
+----
+
+An: 
+
+----
+
+Anmode: not
+
+----
+
+Wcontent:
+
+### 1.1 PURPOSE AND SCOPE
+
+This manual provides comprehensive documentation for the Grimoire Publishing System, a web-based content publishing platform designed for the distribution of long-form written works. The system enables content creators to author, manage, and publish books, novels, and serialised content for web-based consumption.
+
+Grimoire is built upon the Kirby Content Management System (CMS) and provides an enhanced reading experience through progressive web technologies.
+
+### 1.2 INTENDED AUDIENCE
+
+This document serves three primary user classes:
+
+- **System Administrators:** Responsible for installation, configuration, and maintenance
+- **Content Authors:** Individuals creating and managing published works
+- **End Users:** Readers accessing published content through the web interface
+
+### 1.3 DOCUMENTATION CONVENTIONS
+
+Throughout this manual, the following conventions are employed:
+
+- **UPPERCASE** indicates system constants and configuration keys
+- `monospace` indicates file paths, code, and command-line entries
+- *italic* indicates field names and menu options
+- **Bold** indicates important notices or warnings
+
+### 1.4 RELATED DOCUMENTATION
+
+- Kirby CMS Documentation: https://getkirby.com/docs
+- PHP Manual: https://www.php.net/manual/
+- Tailwind CSS Documentation: https://tailwindcss.com/docs
+
+----
+
+Uuid: 7sXFn8Be0ogESE4c

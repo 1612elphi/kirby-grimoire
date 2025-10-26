@@ -1,0 +1,148 @@
+Title: Chapter 8 - Troubleshooting and Maintenance
+
+----
+
+Subtitle: 
+
+----
+
+An: 
+
+----
+
+Anmode: not
+
+----
+
+Wcontent:
+
+### 8.1 COMMON ISSUES
+
+**ISSUE 8.1.1: Panel Access Denied**
+
+**Symptoms:** Cannot access `/panel`, receives error
+
+**Resolution:**
+1. Verify `.htaccess` file present in root directory
+2. Verify Apache `mod_rewrite` enabled
+3. Check file permissions: Panel requires write access to `/site/accounts`
+4. Review PHP error log for specific errors
+
+**ISSUE 8.1.2: Cover Images Not Displaying**
+
+**Symptoms:** Book covers show fallback image or broken image icon
+
+**Resolution:**
+1. Verify image uploaded to book via Panel
+2. Check file exists in: `/content/{book-number}_{book-slug}/`
+3. Verify PHP GD extension installed: `php -m | grep gd`
+4. Check file permissions: Web server must read content directory
+5. Clear media cache: Delete `/media` directory (regenerates automatically)
+
+**ISSUE 8.1.3: CSS Changes Not Appearing**
+
+**Symptoms:** Style modifications not reflected in browser
+
+**Resolution:**
+1. Verify editing correct file: `assets/css/processing.css`
+2. Rebuild CSS: `npm run build`
+3. Clear browser cache: Hard refresh (Ctrl+F5 or Cmd+Shift+R)
+4. Verify output file updated: Check modification time of `assets/css/tailwind.css`
+
+**ISSUE 8.1.4: Progress Tracking Not Working**
+
+**Symptoms:** Reading progress not saved, "Resume Reading" not appearing
+
+**Resolution:**
+1. Verify JavaScript enabled in browser
+2. Check browser console for JavaScript errors
+3. Verify LocalStorage not disabled:
+   - Open browser DevTools
+   - Navigate to Application/Storage tab
+   - Verify LocalStorage accessible
+4. Check browser privacy settings: Some privacy modes disable LocalStorage
+5. Verify `data-book-id` and `data-chapter-id` attributes present on `<body>` element
+
+**ISSUE 8.1.5: Chapter Content Not Displaying**
+
+**Symptoms:** Chapter page loads but content area empty
+
+**Resolution:**
+1. Verify content entered in `wcontent` field (not `content`)
+2. Check chapter.txt file contains `Wcontent:` section
+3. Verify no YAML syntax errors in chapter.txt
+4. Check PHP error log for template rendering errors
+
+### 8.2 PERFORMANCE OPTIMIZATION
+
+**OPTIMIZATION 8.2.1: Image Compression**
+
+For optimal load times:
+1. Compress cover images before upload
+2. Use tools: ImageOptim, TinyPNG, or Squoosh
+3. Target file size: Under 500 KB per cover image
+4. Kirby generates thumbnails automatically from source
+
+**OPTIMIZATION 8.2.2: CSS Purging**
+
+Production builds should purge unused CSS:
+
+Tailwind configuration already optimized:
+- Scans only necessary files for class usage
+- Automatically removes unused utilities
+- `npm run build` produces minified output
+
+**OPTIMIZATION 8.2.3: PHP Caching**
+
+For high-traffic sites:
+1. Enable PHP OPcache in php.ini:
+   ```ini
+   opcache.enable=1
+   opcache.memory_consumption=128
+   opcache.max_accelerated_files=10000
+   ```
+2. Consider Kirby's built-in cache (requires configuration)
+
+### 8.3 SECURITY BEST PRACTICES
+
+**SECURITY 8.3.1: Production Checklist**
+
+Before deploying to production:
+
+- [ ] Disable debug mode in `site/config/config.php`
+- [ ] Use strong passwords for Panel accounts (minimum 12 characters)
+- [ ] Restrict Panel access to admin IP addresses (if feasible)
+- [ ] Enable HTTPS/SSL (required for LocalStorage security)
+- [ ] Keep Kirby and dependencies updated
+- [ ] Set appropriate file permissions:
+  - Directories: 755
+  - Files: 644
+  - Except: `site/accounts/` requires write access
+- [ ] Remove unused Panel users
+- [ ] Regular backups configured
+
+**SECURITY 8.3.2: Content Sanitization**
+
+Kirby automatically sanitizes user input. However:
+
+- Review uploaded files: Only allow trusted users to upload
+- Content Rating system: Use NSFW/NSFL appropriately
+- Author's notes: Markdown permitted but HTML filtered
+
+### 8.4 LOG FILE LOCATIONS
+
+**PHP Error Log:**
+- Location varies by server configuration
+- Common: `/var/log/php/error.log` or server root
+- Enable in php.ini: `log_errors = On`
+
+**Web Server Logs:**
+- Apache: `/var/log/apache2/error.log`
+- Nginx: `/var/log/nginx/error.log`
+
+**Kirby Debug Mode:**
+When enabled, errors display directly in browser (development only).
+
+----
+
+Uuid: jFUYP61A3DGtlgN5

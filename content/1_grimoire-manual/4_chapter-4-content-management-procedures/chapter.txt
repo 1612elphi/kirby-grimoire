@@ -1,0 +1,167 @@
+Title: Chapter 4 - Content Management Procedures
+
+----
+
+Subtitle: 
+
+----
+
+An: 
+
+----
+
+Anmode: not
+
+----
+
+Wcontent:
+
+### 4.1 CONTENT HIERARCHY OVERVIEW
+
+All content resides in the `content/` directory with the following structure:
+
+```
+content/
+├── 1_book-name/
+│   ├── book.txt
+│   ├── cover.jpg
+│   ├── 1_chapter-name/
+│   │   └── chapter.txt
+│   ├── 2_next-chapter/
+│   │   └── chapter.txt
+│   └── ...
+└── 2_another-book/
+    └── ...
+```
+
+**NOTE:** Numeric prefixes determine display order. Higher numbers appear later in sequence.
+
+### 4.2 CREATING A NEW BOOK
+
+**PROCEDURE 4.2.1: Book Creation**
+
+1. Access the Panel at `/panel`
+2. Navigate to the Home page view
+3. Click "+ Add" button
+4. Select "Book" from template options
+5. Enter URL slug (must be unique, lowercase, hyphen-separated)
+6. Click "Add" to create book page
+
+(image: screenshot-create.png)
+
+### 4.3 CONFIGURING BOOK METADATA
+
+**PROCEDURE 4.3.1: Book Field Entry**
+
+Navigate to the newly created book page and complete the following fields:
+
+**Required Fields:**
+
+| Field | Description | Format |
+|-------|-------------|--------|
+| *Title* | Primary book title | Plain text |
+| *Subtitle* | Secondary title or tagline | Plain text |
+| *Author* | Author name(s) | Plain text |
+| *Blurb* | Marketing description | Markdown supported |
+| *Cover* | Cover image | Image file (JPG, PNG recommended) |
+
+**Optional Fields:**
+
+| Field | Description | Default |
+|-------|-------------|---------|
+| *Content Rating* | Display filtering | SFW |
+| *Series Name* | If part of series | Empty |
+| *Series Number* | Sequential position | Empty |
+
+
+**Content Rating Options:**
+
+- **SFW (Safe for Work):** No content warnings, displayed normally
+- **NSFW (Not Safe for Work):** Cover blurred on home page, click to reveal
+- **NSFL (Not Safe for Life):** Cover blurred, requires confirmation dialog
+
+### 4.4 UPLOADING COVER IMAGES
+
+**PROCEDURE 4.4.1: Cover Image Upload**
+
+1. In book editing view, locate *Cover* field
+2. Click "+" or drag image file to upload area
+3. Wait for upload completion
+4. Image appears in cover field
+5. Click "Save" to commit changes
+
+**Image Specifications:**
+
+- Recommended dimensions: 1600 x 2400 pixels (2:3 aspect ratio)
+- Maximum file size: Determined by PHP configuration
+- Supported formats: JPEG, PNG, WebP
+- Color mode: RGB
+
+**NOTE:** Grimoire automatically generates thumbnails for optimal display performance.
+
+### 4.5 CREATING CHAPTERS
+
+**PROCEDURE 4.5.1: Chapter Creation**
+
+1. Within book editing view, locate "Chapters" section
+2. Click "+ Add" button
+3. Select "Chapter" template
+4. Enter chapter URL slug
+5. Click "Add" to create chapter
+
+**PROCEDURE 4.5.2: Chapter Content Entry**
+
+Navigate to chapter editing view and complete:
+
+**Primary Fields:**
+
+| Field | Description | Required |
+|-------|-------------|----------|
+| *Title* | Chapter title | Yes |
+| *Subtitle* | Optional subtitle | No |
+| *Content* (wcontent) | Chapter text | Yes |
+
+**NOTE:** The content field is internally named `wcontent`, not the standard `content` field. This isn't relevant to the user experience, but should be considered when editing the source code.
+
+### 4.6 AUTHOR'S NOTES
+
+Chapters support optional author's notes displayed before or after chapter content.
+
+**PROCEDURE 4.6.1: Adding Author's Notes**
+
+1. In chapter editing view, locate *Author's note* field
+2. Enter note text (Markdown supported)
+3. Select *Author's note mode*:
+   - **Don't Display:** Note saved but not shown
+   - **Display Before Chapter:** Note appears above chapter text
+   - **Display After Chapter:** Note appears below chapter text
+4. Save changes
+
+### 4.7 CHAPTER ORDERING
+
+Chapter display order is determined by numeric prefixes in the file system.
+
+**PROCEDURE 4.7.1: Reordering Chapters**
+
+1. In book editing view, locate "Chapters" section
+2. Hover over chapter to reveal handle icon
+3. Click and drag chapter to new position
+4. Release to commit new order
+5. System automatically updates numeric prefixes
+
+### 4.8 SERIES MANAGEMENT
+
+Books may be organized into series with sequential navigation.
+
+**PROCEDURE 4.8.1: Adding Book to Series**
+
+1. Edit book metadata
+2. Enter *Series Name* (must match exactly across all books in series)
+3. Enter *Series Number* (integer: 1, 2, 3, etc.)
+4. Save changes
+
+When series metadata is configured, automatic "Previous" and "Next" navigation links appear on book pages, allowing readers to traverse the series sequentially.
+
+----
+
+Uuid: 9j3BTUrihI0S6CTE

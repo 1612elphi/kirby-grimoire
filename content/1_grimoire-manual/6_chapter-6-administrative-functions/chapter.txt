@@ -1,0 +1,137 @@
+Title: Chapter 6 - Administrative Functions
+
+----
+
+Subtitle: 
+
+----
+
+An: 
+
+----
+
+Anmode: not
+
+----
+
+Wcontent:
+
+### 6.1 USER MANAGEMENT
+
+**PROCEDURE 6.1.1: Creating Additional Users**
+
+1. Log into Panel as administrator
+2. Navigate to Users section
+3. Click "+ Add" to create new user
+4. Enter user details:
+   - Email address
+   - Password
+   - User role (Admin or Editor)
+   - Language preference
+5. Save user account
+
+**User Roles:**
+
+| Role | Permissions |
+|------|-------------|
+| Admin | Full system access, user management, settings |
+| Editor | Content creation and editing, no settings access |
+
+### 6.2 CONTENT PUBLICATION CONTROL
+
+**PROCEDURE 6.2.1: Publishing Content**
+
+Content visibility controlled by page status:
+
+- **Draft:** Content exists but not listed on site
+- **Listed:** Content visible to public
+
+To publish content:
+1. Edit page in Panel
+2. Locate status control (top right)
+3. Change from "Draft" to "Listed"
+4. Save changes
+
+**PROCEDURE 6.2.2: Unpublishing Content**
+
+1. Edit page in Panel
+2. Change status from "Listed" to "Unlisted" or "Draft"
+3. Save changes
+4. Content removed from public view immediately
+
+### 6.3 BACKUP PROCEDURES
+
+**PROCEDURE 6.3.1: Content Backup**
+
+1. Access server via FTP, SFTP, or shell
+2. Navigate to installation directory
+3. Create compressed archive of:
+   - `/content` directory (all content and metadata)
+   - `/media` directory (uploaded images)
+   - `/site` directory (templates and configuration)
+4. Download archive to secure location
+5. Verify archive integrity
+
+**Recommended Backup Frequency:** Daily for active sites, weekly for static sites
+
+**PROCEDURE 6.3.2: Database-Free Architecture**
+
+**NOTE:** Grimoire utilizes file-based storage. No database backup required. All content exists as human-readable text files.
+
+### 6.4 ASSET COMPILATION
+
+**PROCEDURE 6.4.1: CSS Rebuilding**
+
+When modifying styles:
+
+1. Edit source file: `assets/css/processing.css`
+2. Execute build command:
+   ```
+   npm run build
+   ```
+3. Compiled output written to: `assets/css/tailwind.css`
+4. Clear browser cache to see changes
+
+**PROCEDURE 6.4.2: Development Workflow**
+
+For active development:
+
+```
+npm run watch
+```
+
+This command monitors source files and automatically rebuilds on changes.
+
+### 6.5 SYSTEM UPDATES
+
+**PROCEDURE 6.5.1: Updating Kirby CMS**
+
+1. Backup entire installation (see PROCEDURE 6.3.1)
+2. Navigate to installation directory via command line
+3. Execute update command:
+   ```
+   composer update
+   ```
+4. Review update log for breaking changes
+5. Test site functionality
+6. If issues occur, restore from backup
+
+**PROCEDURE 6.5.2: Updating Frontend Dependencies**
+
+1. Check for outdated packages:
+   ```
+   npm outdated
+   ```
+2. Update packages:
+   ```
+   npm update
+   ```
+3. Rebuild assets:
+   ```
+   npm run build
+   ```
+4. Test site functionality
+
+----
+
+Uuid: 0YKENdX6BoOXvlVH

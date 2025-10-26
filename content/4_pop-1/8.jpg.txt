@@ -1,0 +1,29 @@
+Sort: 3
+
+----
+
+Chapterstart: false
+
+----
+
+Alt: 
+
+----
+
+Caption: 
+
+----
+
+Commentary: 
+
+----
+
+Commentary-mode: hidden
+
+----
+
+Uuid: cfCPPF3SDPSZ31Pc
+
+----
+
+Template: comic-page

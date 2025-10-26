@@ -1,0 +1,29 @@
+Sort: 8
+
+----
+
+Chapterstart: false
+
+----
+
+Alt: 
+
+----
+
+Caption: 
+
+----
+
+Commentary: 
+
+----
+
+Commentary-mode: hidden
+
+----
+
+Uuid: FuICmZaMoxKey2KA
+
+----
+
+Template: comic-page
