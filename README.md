@@ -30,8 +30,6 @@ Publish webcomics with a dedicated comic reader interface:
 2. Go to /panel and follow the installation instructions.
 3. Enjoy!
 
-Note: I probably won't update this unless there's game-breaking bugs, so PLEASE update Kirby to the latest version. You can do this by running `composer update` in the root directory of the project.
-
 ## Requirements
 
 - PHP 8.2 or higher
